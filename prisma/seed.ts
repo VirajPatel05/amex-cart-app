@@ -55,19 +55,21 @@ async function main() {
 
   // Seed sample test user for assessment review
   const bcrypt = await import("bcryptjs");
-  const testPasswordHash = await bcrypt.hash("password123", 10);
+  const testPasswordHash = await bcrypt.hash("test@123", 10);
 
   await prisma.user.upsert({
-    where: { email: "priya@amex.com" },
-    update: {},
+    where: { email: "test@gmail.com" },
+    update: { passwordHash: testPasswordHash },
     create: {
-      name: "Priya",
-      email: "priya@amex.com",
+      name: "Test User",
+      email: "test@gmail.com",
       passwordHash: testPasswordHash,
     },
   });
 
-  console.log("Database seeded with 8 products and test account (priya@amex.com / password123) successfully!");
+  console.log(
+    "Database seeded with 8 products and test account (test@gmail.com / test@123) successfully!",
+  );
 }
 
 main()

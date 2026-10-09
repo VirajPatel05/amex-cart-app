@@ -47,7 +47,7 @@ export default function RegisterPage() {
                 type="text"
                 name="name"
                 required
-                placeholder="Viraj Patel"
+                placeholder="Name"
                 className="w-full px-4 py-3.5 glass-input rounded-2xl text-sm outline-none placeholder:text-slate-500"
               />
             </div>
@@ -60,7 +60,7 @@ export default function RegisterPage() {
                 type="email"
                 name="email"
                 required
-                placeholder="patelviraj5605@gmail.com"
+                placeholder="example@gmail.com"
                 className="w-full px-4 py-3.5 glass-input rounded-2xl text-sm outline-none placeholder:text-slate-500"
               />
             </div>

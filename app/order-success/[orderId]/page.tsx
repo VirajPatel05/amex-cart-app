@@ -54,6 +54,34 @@ export default async function OrderSuccessPage({
 
   return (
     <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto space-y-6">
+      {/* 3-Step Indicator with Step 3 Active */}
+      <div className="flex flex-wrap items-center justify-center gap-2 text-xs font-bold pb-2">
+        <div className="flex items-center gap-2 text-emerald-300 bg-emerald-950/60 border border-emerald-500/40 px-3.5 py-2 rounded-xl">
+          <span className="w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[10px] font-black">
+            ✓
+          </span>
+          <span>Review Items</span>
+        </div>
+
+        <span className="text-slate-600 font-bold">→</span>
+
+        <div className="flex items-center gap-2 text-emerald-300 bg-emerald-950/60 border border-emerald-500/40 px-3.5 py-2 rounded-xl">
+          <span className="w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[10px] font-black">
+            ✓
+          </span>
+          <span>Checkout</span>
+        </div>
+
+        <span className="text-slate-600 font-bold">→</span>
+
+        <div className="flex items-center gap-2 text-white bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-500 border border-cyan-400/50 px-3.5 py-2 rounded-xl shadow-[0_0_25px_rgba(16,185,129,0.5)]">
+          <span className="w-5 h-5 rounded-full bg-white text-emerald-700 flex items-center justify-center text-[10px] font-black">
+            ✓
+          </span>
+          <span>Email Bill Sent</span>
+        </div>
+      </div>
+
       {/* Liquid Glass Order Receipt Card */}
       <div className="glass-panel rounded-3xl overflow-hidden border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.8)]">
         {/* Header with Glowing Centurion Style */}
