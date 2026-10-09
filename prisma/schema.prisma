@@ -1,0 +1,56 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String       @id @default(uuid())
+  name          String
+  email         String       @unique
+  passwordHash  String
+  createdAt     DateTime     @default(now())
+  cartItems     CartItem[]
+  orders        Order[]
+}
+
+model Product {
+  id          Int          @id @default(autoincrement())
+  name        String
+  price       Float        // Stored in rupees (e.g., 499.00)
+  imageUrl    String?
+  cartItems   CartItem[]
+}
+
+model CartItem {
+  id        String   @id @default(uuid())
+  userId    String
+  productId Int
+  quantity  Int      @default(1)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId]) // Ensures a user has a single row per product in their cart
+}
+
+model Order {
+  id          String      @id @default(uuid())
+  userId      String
+  grandTotal  Float
+  createdAt   DateTime    @default(now())
+  user        User        @relation(fields: [userId], references: [id])
+  items       OrderItem[]
+}
+
+model OrderItem {
+  id          String   @id @default(uuid())
+  orderId     String
+  productName String
+  price       Float
+  quantity    Int
+  total       Float
+  order       Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
