@@ -55,8 +55,9 @@ export async function registerUser(
       secure: process.env.NODE_ENV === "production",
       path: "/",
     });
-  } catch {
-    return { error: "Something went wrong during registration." };
+  } catch (error) {
+    console.error("Registration failed error:", error);
+    return { error: "Something went wrong during registration. Please check database connection." };
   }
 
   redirect("/dashboard");
@@ -102,8 +103,9 @@ export async function loginUser(
       secure: process.env.NODE_ENV === "production",
       path: "/",
     });
-  } catch {
-    return { error: "Something went wrong during login." };
+  } catch (error) {
+    console.error("Login failed error:", error);
+    return { error: "Something went wrong during login. Please check database connection." };
   }
 
   redirect("/dashboard");
